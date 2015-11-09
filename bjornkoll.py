@@ -23,7 +23,7 @@ then = dates[-1][0]
 then -= timedelta(days=then.weekday())
 weeks = {}
 weeks['{1}, Week {0:2d}'.format(then.isocalendar()[1] , then.isocalendar()[0])] = [0, ' | ']
-while then<now:
+while then<=now:
 	weeks['{1}, Week {0:2d}'.format(then.isocalendar()[1] , then.isocalendar()[0])] = [0, ' | ']
 	then+=timedelta(days=7)
 
