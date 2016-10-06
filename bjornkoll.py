@@ -8,7 +8,7 @@ morePages = True
 dates = []
 while morePages:
 	response = requests.get("http://www.thebearden.se/news?page={}".format(page))
-	parsed_html = BeautifulSoup(response.text)
+	parsed_html = BeautifulSoup(response.text, "lxml")
 	for node in parsed_html.body.find_all('div', attrs = {'id':'newsbox'}):
 		str = node.contents[0].contents[0];
 		node = node.find('p', attrs = {'class':'inline'})
