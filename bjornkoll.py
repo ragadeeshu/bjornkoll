@@ -2,6 +2,7 @@ import datetime
 from datetime import timedelta
 from bs4 import BeautifulSoup
 import requests
+import pickle
 
 page = 1
 morePages = True
@@ -31,6 +32,9 @@ for date in dates:
 	weeks['{1}, Week {0:2d}'.format(date[0].isocalendar()[1] , date[0].isocalendar()[0])][0]+=1
 	weeks['{1}, Week {0:2d}'.format(date[0].isocalendar()[1] , date[0].isocalendar()[0])][1]+=(date[1] + ' | ');
 
+numweeks = {x: weeks[x][0] for x in weeks}
+with open('weeks.pickle', 'wb') as f:
+    pickle.dump(numweeks, f)
 
 brokenstreak = False
 currentstreak=0
