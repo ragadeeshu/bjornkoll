@@ -6,8 +6,9 @@ import requests
 page = 1
 morePages = True
 dates = []
+headers={'User-Agent': 'Mozilla/5.0'}
 while morePages:
-	response = requests.get("http://www.thebearden.se/news?page={}".format(page))
+	response = requests.get("http://www.thebearden.se/news?page={}".format(page), headers=headers)
 	parsed_html = BeautifulSoup(response.text, "lxml")
 	for node in parsed_html.body.find_all('div', attrs = {'id':'newsbox'}):
 		str = node.contents[0].contents[0];
